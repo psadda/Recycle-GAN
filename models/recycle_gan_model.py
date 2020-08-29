@@ -11,9 +11,9 @@ from . import networks
 import sys
 
 
-class ReCycleGANModel(BaseModel):
+class RecycleGANModel(BaseModel):
     def name(self):
-        return 'ReCycleGANModel'
+        return 'RecycleGANModel'
 
     def initialize(self, opt):
         BaseModel.initialize(self, opt)
