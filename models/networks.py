@@ -248,7 +248,6 @@ class LinkNetEncoder(nn.Module):
 class LinkNetDecoder(nn.Module):
 
     def __init__(self, in_planes, out_planes, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=False):
-        # TODO bias=True
         super(Decoder, self).__init__()
         self.conv1 = nn.Sequential(nn.Conv2d(in_planes, in_planes//4, 1, 1, 0, bias=bias),
                                 nn.BatchNorm2d(in_planes//4),
@@ -322,7 +321,6 @@ class LinkNet(nn.Module):
         e4 = self.encoder4(e3)
 
         # Decoder blocks
-        #d4 = e3 + self.decoder4(e4)
         d4 = e3 + self.decoder4(e4)
         d3 = e2 + self.decoder3(d4)
         d2 = e1 + self.decoder2(d3)
