@@ -303,10 +303,10 @@ class LinkNetGenerator(nn.Module):
 
         # Classifier
         self.tp_conv1 = nn.Sequential(nn.ConvTranspose2d(64, 32, 3, 2, 1, 1),
-                                      nn.BatchNorm2d(32),
+                                      nn.norm_layer(32),
                                       nn.ReLU(inplace=True),)
         self.conv2 = nn.Sequential(nn.Conv2d(32, 32, 3, 1, 1),
-                                nn.BatchNorm2d(32),
+                                nn.norm_layer(32),
                                 nn.ReLU(inplace=True),)
         self.tp_conv2 = nn.ConvTranspose2d(32, output_nc, 2, 2, 0)
         self.lsm = nn.LogSoftmax(dim=1)
