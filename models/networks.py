@@ -269,18 +269,18 @@ class LinkNetDecoder(nn.Module):
         return x
 
 
-class LinkNet(nn.Module):
+class LinkNetGenerator(nn.Module):
     """
     Generate Model Architecture
     """
 
-    def __init__(self, n_classes=21):
+    def __init__(self, input_nc, output_nc):
         """
         Model initialization
         :param x_n: number of input neurons
         :type x_n: int
         """
-        super(LinkNet, self).__init__()
+        super(LinkNetGenerator, self).__init__()
 
         base = resnet.resnet18(pretrained=True)
 
@@ -308,7 +308,7 @@ class LinkNet(nn.Module):
         self.conv2 = nn.Sequential(nn.Conv2d(32, 32, 3, 1, 1),
                                 nn.BatchNorm2d(32),
                                 nn.ReLU(inplace=True),)
-        self.tp_conv2 = nn.ConvTranspose2d(32, n_classes, 2, 2, 0)
+        self.tp_conv2 = nn.ConvTranspose2d(32, output_nc, 2, 2, 0)
         self.lsm = nn.LogSoftmax(dim=1)
 
 
